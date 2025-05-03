@@ -1,0 +1,106 @@
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import { navLinks } from "@/lib/navigation";
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location] = useLocation();
+  
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
+  // Close mobile menu when window is resized to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <header className="fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-300">
+      <div className="container-custom py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <img 
+            src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp" 
+            alt="The Coating Pros Logo" 
+            className="h-8 w-auto dark:invert"
+          />
+          <div>
+            <h1 className="font-heading font-bold text-lg text-primary dark:text-white">The Coating Pros</h1>
+            <p className="text-xs text-secondary-light dark:text-slate-400 -mt-1">Houston's Roof Coating Specialists</p>
+          </div>
+        </Link>
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.path} 
+              href={link.path}
+              className={`nav-link ${location === link.path ? 'nav-link-active' : 'nav-link-inactive'}`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+        
+        {/* Theme Toggle and Mobile Menu Button */}
+        <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          
+          <button 
+            onClick={toggleMenu}
+            className="md:hidden text-slate-800 dark:text-white focus:outline-none" 
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+      
+      {/* Mobile Menu */}
+      <div 
+        className={`md:hidden bg-white dark:bg-slate-800 shadow-lg overflow-hidden transition-all duration-300 ${
+          isMenuOpen ? 'max-h-96' : 'max-h-0'
+        }`}
+      >
+        <div className="container-custom py-3 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.path} 
+              href={link.path}
+              className={`py-2 font-medium ${
+                location === link.path 
+                  ? 'text-primary dark:text-white' 
+                  : 'text-slate-600 dark:text-slate-300'
+              } border-b border-slate-100 dark:border-slate-700`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+}

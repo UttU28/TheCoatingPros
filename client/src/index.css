@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 213 53% 24%; /* #1a365d */
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 213 47% 33%; /* #2c4c7c */
+    --primary-dark: 212 65% 18%; /* #102a4c */
+
+    --secondary: 215 19% 35%; /* #475569 */
+    --secondary-foreground: 210 40% 98%;
+    --secondary-light: 216 22% 47%; /* #64748b */
+    --secondary-dark: 215 25% 27%; /* #334155 */
+
+    --accent: 174 85% 32%; /* #0d9488 */
+    --accent-foreground: 210 40% 98%;
+    --accent-light: 173 58% 40%; /* #14b8a6 */
+    --accent-dark: 173 63% 26%; /* #0f766e */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 213 53% 24%;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222.2 47.4% 11.2%;
+    --sidebar-primary: 213 53% 24%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 174 85% 32%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 213 53% 24%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 213 53% 24%;
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 213 47% 33%;
+    --primary-dark: 212 65% 18%;
+
+    --secondary: 215 19% 35%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-light: 216 22% 47%;
+    --secondary-dark: 215 25% 27%;
+
+    --accent: 174 85% 32%;
+    --accent-foreground: 210 40% 98%;
+    --accent-light: 173 58% 40%;
+    --accent-dark: 173 63% 26%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 174 85% 32%;
+
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 213 53% 24%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 174 85% 32%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 174 85% 32%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-body antialiased bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-all duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4;
+  }
+
+  .nav-link {
+    @apply font-medium border-b-2 transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-primary dark:text-white border-accent;
+  }
+
+  .nav-link-inactive {
+    @apply text-slate-600 dark:text-slate-300 hover:text-accent dark:hover:text-accent border-transparent hover:border-accent;
+  }
+
+  .animate-btn {
+    @apply relative overflow-hidden;
+  }
+
+  .animate-btn::after {
+    @apply content-[''] absolute top-1/2 left-1/2 w-[150%] h-[150%] bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 scale-0 transition-transform duration-500 ease-out;
+  }
+
+  .animate-btn:hover::after {
+    @apply scale-100;
+  }
+
+  .service-card {
+    @apply bg-slate-50 dark:bg-slate-800 p-6 md:p-8 rounded-lg shadow-md dark:shadow-lg border border-slate-100 dark:border-slate-700 transition-all duration-300;
+  }
+
+  .service-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .gallery-item {
+    @apply relative overflow-hidden rounded-lg shadow-md cursor-pointer;
+  }
+
+  .fadeIn {
+    @apply opacity-0 translate-y-5;
+  }
+
+  .fadeIn.visible {
+    @apply opacity-100 translate-y-0 transition-all duration-500 ease-out;
+  }
+}
