@@ -88,15 +88,24 @@ export default function ServiceHighlights() {
   };
   
   return (
-    <section className="py-20 bg-white dark:bg-slate-800">
-      <div className="container-custom">
+    <section className="relative py-20">
+      {/* Background with overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000136-74c3574c38/dji_fly_20250325_110426_0_1742919607139_photo.webp?ph=18efabd6cf"
+          alt="Commercial Roof Background"
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/70"></div>
+      </div>
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Our Professional Services
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
