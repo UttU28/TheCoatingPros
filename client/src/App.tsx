@@ -3,6 +3,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./components/home/HeroSection";
 import AboutSection from "./components/home/AboutSection";
+import TestimonialsSection from "./components/home/TestimonialsSection";
 import ServiceHighlights from "./components/home/ServiceHighlights";
 import ProjectGallery from "./components/home/ProjectGallery";
 import Certifications from "./components/home/CertificationsSection";
@@ -21,6 +22,9 @@ function App() {
         <Element name="about">
           <AboutSection />
         </Element>
+        
+        {/* Adding Testimonials right after About section */}
+        <TestimonialsSection />
         
         <Element name="services">
           <ServiceHighlights />
