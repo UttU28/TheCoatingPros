@@ -4,32 +4,32 @@ import * as schema from "@shared/schema";
 // Mock gallery images for the website
 const galleryImages = [
   {
-    url: "https://images.unsplash.com/photo-1621146027714-e8726d0666e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80",
     title: "Commercial roof coating project",
     category: "roof-coating"
   },
   {
-    url: "https://images.unsplash.com/photo-1565938525338-868904466517?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1599619585752-c3edb42a414c?auto=format&fit=crop&w=800&q=80",
     title: "Roof maintenance workers",
     category: "maintenance"
   },
   {
-    url: "https://images.unsplash.com/photo-1572811777176-098942f8e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1582480459366-1ccf56b5b4d3?auto=format&fit=crop&w=800&q=80",
     title: "Commercial building with coated roof",
     category: "commercial"
   },
   {
-    url: "https://images.unsplash.com/photo-1595514535919-e297e71e21b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1616712134411-6b6ae89bc3ba?auto=format&fit=crop&w=800&q=80",
     title: "Waterproofing application",
     category: "waterproofing"
   },
   {
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1470&q=80",
     title: "Modern commercial building",
     category: "commercial"
   },
   {
-    url: "https://images.unsplash.com/photo-1619364726002-dfd4fdaee79f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    url: "https://images.unsplash.com/photo-1617720356637-6264c1c0b4bb?auto=format&fit=crop&w=1000&q=80",
     title: "Roofing professional inspection",
     category: "maintenance"
   }
