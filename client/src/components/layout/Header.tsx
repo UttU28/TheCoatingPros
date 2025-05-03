@@ -1,16 +1,34 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { navLinks } from "@/lib/navigation";
+import { motion } from "framer-motion";
+
+const navLinks = [
+  { name: "Home", to: "home" },
+  { name: "About", to: "about" },
+  { name: "Services", to: "services" },
+  { name: "Gallery", to: "gallery" },
+  { name: "Certifications", to: "certifications" },
+  { name: "Contact", to: "contact" }
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [scrolled, setScrolled] = useState(false);
   
-  // Close mobile menu on route change
+  // Handle scroll effect on header
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close mobile menu when window is resized to desktop
   useEffect(() => {
@@ -28,11 +46,25 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
+  const headerVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-300">
+    <motion.header 
+      initial="hidden"
+      animate="visible"
+      variants={headerVariants}
+      className={`fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}
+    >
       <div className="container-custom py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <div onClick={scrollToTop} className="flex items-center space-x-2 cursor-pointer">
           <img 
             src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp" 
             alt="The Coating Pros Logo" 
@@ -42,18 +74,23 @@ export default function Header() {
             <h1 className="font-heading font-bold text-lg text-primary dark:text-white">The Coating Pros</h1>
             <p className="text-xs text-secondary-light dark:text-slate-400 -mt-1">Houston's Roof Coating Specialists</p>
           </div>
-        </Link>
+        </div>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              href={link.path}
-              className={`nav-link ${location === link.path ? 'nav-link-active' : 'nav-link-inactive'}`}
+            <ScrollLink 
+              key={link.to} 
+              to={link.to}
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              activeClass="nav-link-active"
+              className="nav-link nav-link-inactive cursor-pointer transition-all duration-300 hover:text-primary"
             >
               {link.name}
-            </Link>
+            </ScrollLink>
           ))}
         </nav>
         
@@ -87,20 +124,22 @@ export default function Header() {
       >
         <div className="container-custom py-3 flex flex-col space-y-4">
           {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              href={link.path}
-              className={`py-2 font-medium ${
-                location === link.path 
-                  ? 'text-primary dark:text-white' 
-                  : 'text-slate-600 dark:text-slate-300'
-              } border-b border-slate-100 dark:border-slate-700`}
+            <ScrollLink 
+              key={link.to} 
+              to={link.to}
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              activeClass="text-primary dark:text-white"
+              className="py-2 font-medium text-slate-600 dark:text-slate-300 border-b border-slate-100 dark:border-slate-700 cursor-pointer"
+              onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </Link>
+            </ScrollLink>
           ))}
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

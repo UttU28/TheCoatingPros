@@ -1,35 +1,42 @@
-import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
-import NotFound from "@/pages/not-found";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Gallery from "./pages/Gallery";
-import Certifications from "./pages/Certifications";
-import Contact from "./pages/Contact";
-
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/services" component={Services} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/certifications" component={Certifications} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
+import HeroSection from "./components/home/HeroSection";
+import AboutSection from "./components/home/AboutSection";
+import ServiceHighlights from "./components/home/ServiceHighlights";
+import ProjectGallery from "./components/home/ProjectGallery";
+import Certifications from "./components/home/CertificationsSection";
+import ContactTeaser from "./components/home/ContactTeaser";
+import { Element } from "react-scroll";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow pt-20">
-        <Router />
+        <Element name="home">
+          <HeroSection />
+        </Element>
+        
+        <Element name="about">
+          <AboutSection />
+        </Element>
+        
+        <Element name="services">
+          <ServiceHighlights />
+        </Element>
+        
+        <Element name="gallery">
+          <ProjectGallery />
+        </Element>
+        
+        <Element name="certifications">
+          <Certifications />
+        </Element>
+        
+        <Element name="contact">
+          <ContactTeaser />
+        </Element>
       </main>
       <Footer />
       <Toaster />
