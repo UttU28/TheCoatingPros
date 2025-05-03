@@ -1,29 +1,8 @@
-import { useState, useEffect } from "react";
+import { useTheme } from "../../contexts/ThemeContext";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    // Check for saved theme preference or use prefer-color-scheme
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" || 
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-
-    setTheme(savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-
-    localStorage.setItem("theme", newTheme);
-
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
-
+  const { theme, toggleTheme } = useTheme();
+  
 return (
     <button
       onClick={toggleTheme}

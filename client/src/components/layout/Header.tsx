@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+import ThemeToggle from "../ui/ThemeToggle";
 import { motion } from "framer-motion";
 
 const navLinks = [
