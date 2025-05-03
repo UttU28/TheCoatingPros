@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -247,31 +246,43 @@ export default function ProjectGallery() {
             </button>
           </div>
 
-          {/* Thumbnails Slider */}
-          <div className="max-w-4xl mx-auto overflow-hidden mb-8">
+          {/* Thumbnails Slider - Modified for better spacing */}
+          <div className="max-w-4xl mx-auto overflow-hidden mb-8 px-4 md:px-8">
             <div 
               ref={sliderRef}
-              className="flex space-x-3 pb-6 overflow-x-auto scrollbar-hide"
+              className="flex space-x-4 pb-6 pt-2 overflow-x-auto scrollbar-hide relative"
               style={{ scrollBehavior: 'smooth' }}
             >
+              {/* Adding a spacer element at the beginning for padding */}
+              <div className="flex-shrink-0 w-2 h-1"></div>
+
               {projectImages.map((image, index) => (
                 <div
                   key={image.id}
                   className={cn(
-                    "flex-shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-300 w-20 h-20",
+                    "flex-shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-300 w-20 h-20 relative",
                     currentIndex === index 
-                      ? "ring-4 ring-primary scale-110 opacity-100 shadow-lg" 
-                      : "ring-1 ring-slate-200 dark:ring-slate-700 scale-100 opacity-60 hover:opacity-90"
+                      ? "ring-4 ring-primary scale-115 opacity-100 shadow-lg border-2 border-white dark:border-slate-800" 
+                      : "ring-1 ring-slate-200 dark:ring-slate-700 scale-100 opacity-60 hover:opacity-90 hover:scale-105"
                   )}
                   onClick={() => setCurrentIndex(index)}
                 >
                   <img
                     src={image.src}
                     alt={image.caption}
-                    className="w-full h-full object-cover"
+                    className={cn(
+                      "w-full h-full object-cover transition-all duration-300",
+                      currentIndex === index ? "brightness-110" : "brightness-90"
+                    )}
                   />
+                  {currentIndex === index && (
+                    <div className="absolute inset-0 border-2 border-primary rounded-lg pointer-events-none"></div>
+                  )}
                 </div>
               ))}
+
+              {/* Adding a spacer element at the end for padding */}
+              <div className="flex-shrink-0 w-2 h-1"></div>
             </div>
           </div>
         </motion.div>

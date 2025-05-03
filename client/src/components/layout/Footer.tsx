@@ -27,7 +27,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <img 
-                src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp" 
+                src="https://silver-imaginative-beetle-350.mypinata.cloud/ipfs/bafkreibikyk73phdlhho755ltj35an5uvs2oj3lgn4gcy2n5sddodrasjy" 
                 alt="The Coating Pros Logo" 
                 className="h-8 w-auto invert"
               />
@@ -134,25 +134,9 @@ export default function Footer() {
         </div>
         
         {/* Bottom Footer */}
-        <div className="pt-8 border-t border-slate-800 text-center md:flex md:justify-between md:items-center relative">
+        <div className="pt-8 border-t border-slate-800 text-center md:flex md:justify-between md:items-center">
           <p className="text-slate-500 mb-4 md:mb-0">&copy; {new Date().getFullYear()} The Coating Pros. All Rights Reserved.</p>
           <p className="text-slate-500">Houston's Trusted Roof Coating Specialists</p>
-          
-          {/* Scroll to top button */}
-          <div className="absolute right-0 -top-6 md:top-0">
-            <ScrollLink
-              to="home"
-              spy={true}
-              smooth={true}
-              duration={800}
-              className="bg-primary hover:bg-primary-light text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Scroll to top"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
-            </ScrollLink>
-          </div>
         </div>
       </div>
     </footer>

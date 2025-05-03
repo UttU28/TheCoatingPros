@@ -97,8 +97,8 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator - centered for all screen sizes */}
-        <div className="absolute left-1/2 top-[80%] transform -translate-x-1/2 z-20 w-full flex justify-center">
+        {/* Scroll indicator - hidden on mobile, visible on medium and larger screens */}
+        <div className="absolute left-1/2 bottom-[-15%] transform -translate-x-1/2 z-20 w-full flex justify-center hidden md:flex">
           <motion.div
             className="flex flex-col items-center"
             initial={{ opacity: 0, y: -20 }}

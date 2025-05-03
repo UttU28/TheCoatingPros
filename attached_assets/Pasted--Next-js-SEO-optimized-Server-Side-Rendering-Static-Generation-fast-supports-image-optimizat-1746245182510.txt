@@ -21,7 +21,7 @@ FOr rest of the page create an empty page as of now, we will add those apges lat
 Please generate a full multi-page responsive website for a business named **"The Coating Pros"**, a Houston-based **commercial roof coating company**. Design should be **clean**, **professional**, and **trustworthy**. Include a **black and white crucifix cross icon** in the navbar from this image:
 
 **Icon link:**
-`https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp?ph=18efabd6cf`
+`https://silver-imaginative-beetle-350.mypinata.cloud/ipfs/bafkreibikyk73phdlhho755ltj35an5uvs2oj3lgn4gcy2n5sddodrasjy?ph=18efabd6cf`
 
 **NAVBAR:**
 
