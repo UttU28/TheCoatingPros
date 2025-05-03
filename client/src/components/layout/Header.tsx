@@ -71,13 +71,13 @@ export default function Header() {
           <img
             src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp"
             alt="The Coating Pros Logo"
-            className="h-8 w-auto dark:invert"
+            className={`transition-all duration-300 dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
           />
           <div>
-            <h1 className="font-heading font-bold text-lg text-primary dark:text-white">
+            <h1 className={`font-heading font-bold text-primary dark:text-white transition-all duration-300 ${scrolled ? "text-lg" : "text-xl md:text-2xl"}`}>
               The Coating Pros
             </h1>
-            <p className="text-xs text-secondary-light dark:text-slate-400 -mt-1">
+            <p className={`text-secondary-light dark:text-slate-400 -mt-1 transition-all duration-300 ${scrolled ? "text-xs" : "text-sm"}`}>
               Houston's Roof Coating Specialists
             </p>
           </div>
@@ -94,7 +94,7 @@ export default function Header() {
               offset={-80}
               duration={500}
               activeClass="nav-link-active"
-              className="nav-link nav-link-inactive cursor-pointer transition-all duration-300 hover:text-primary"
+              className={`nav-link nav-link-inactive cursor-pointer transition-all duration-300 hover:text-primary ${scrolled ? "text-base" : "text-lg"}`}
             >
               {link.name}
             </ScrollLink>
