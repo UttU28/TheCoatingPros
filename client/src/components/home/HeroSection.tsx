@@ -97,15 +97,15 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="container-custom relative">
+        {/* Scroll indicator - Centered at the bottom */}
+        <div className="fixed left-0 right-0 bottom-8 flex justify-center items-center w-full z-20 pointer-events-none">
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 -bottom-20 flex flex-col items-center"
+            className="flex flex-col items-center pointer-events-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
           >
-            <p className="text-sm text-gray-300 mb-2">Scroll to learn more</p>
+            <p className="text-sm text-white font-medium mb-2 text-center">Scroll to learn more</p>
             <motion.div
               animate={{
                 y: [0, 10, 0],
@@ -115,13 +115,13 @@ export default function HeroSection() {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center pt-1"
+              className="w-7 h-12 border-2 border-white rounded-full flex justify-center pt-1 mx-auto"
             >
               <motion.div
-                className="w-1 h-2 bg-white rounded-full"
+                className="w-1.5 h-3 bg-white rounded-full"
                 animate={{
                   opacity: [0.2, 1, 0.2],
-                  y: [0, 4, 0],
+                  y: [0, 5, 0],
                 }}
                 transition={{
                   duration: 1.5,

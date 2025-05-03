@@ -136,15 +136,33 @@
   }
 
   .animate-btn {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden transform transition-all duration-300 ease-out;
   }
 
+  .animate-btn::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-white/0 opacity-0 transition-all duration-300;
+  }
+  
   .animate-btn::after {
-    @apply content-[''] absolute top-1/2 left-1/2 w-[150%] h-[150%] bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 scale-0 transition-transform duration-500 ease-out;
+    @apply content-[''] absolute top-1/2 left-1/2 w-0 h-0 bg-white/20 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out;
   }
 
+  .animate-btn:hover {
+    @apply shadow-lg scale-105 translate-y-[-2px];
+    transform-origin: center;
+  }
+  
+  .animate-btn:hover::before {
+    @apply opacity-100;
+  }
+  
   .animate-btn:hover::after {
-    @apply scale-100;
+    @apply w-[200%] h-[200%];
+  }
+  
+  .animate-btn:active {
+    @apply scale-95 shadow-inner;
+    transition-duration: 0.1s;
   }
 
   .service-card {
