@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import LightboxGallery from "../shared/LightboxGallery";
@@ -74,14 +74,29 @@ export default function ProjectGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % projectImages.length);
-    }, 2000);
+    }, 5000); // Changed to 5 seconds
 
     return () => clearInterval(timer);
   }, []);
+  
+  // Scroll to active thumbnail when currentIndex changes
+  useEffect(() => {
+    const scrollToActiveThumb = () => {
+      if (carouselRef.current) {
+        const activeThumbElement = carouselRef.current.querySelector(`[data-thumb-index="${currentIndex}"]`);
+        if (activeThumbElement instanceof HTMLElement) {
+          activeThumbElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    };
+    
+    setTimeout(scrollToActiveThumb, 100); // Slight delay to ensure DOM is updated
+  }, [currentIndex]);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -156,38 +171,39 @@ export default function ProjectGallery() {
           </div>
 
           {/* Thumbnails Carousel */}
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-              containScroll: "trimSnaps",
-            }}
-            className="w-full max-w-3xl mx-auto"
-          >
-            <CarouselContent className="-ml-2">
+          <div ref={carouselRef} className="w-full max-w-3xl mx-auto overflow-hidden">
+            <div className="flex space-x-2 pb-4 overflow-x-auto scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
               {projectImages.map((image, index) => (
-                <CarouselItem key={image.id} className="pl-2 basis-1/5 sm:basis-1/6 md:basis-1/7 lg:basis-1/8">
-                  <div
-                    className={cn(
-                      "relative aspect-square cursor-pointer overflow-hidden rounded-lg transition-all duration-300",
-                      currentIndex === index 
-                        ? "ring-2 ring-primary scale-95 opacity-100" 
-                        : "ring-0 scale-90 opacity-70 hover:opacity-100 hover:scale-95"
-                    )}
-                    onClick={() => setCurrentIndex(index)}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.caption}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </CarouselItem>
+                <div
+                  key={image.id}
+                  data-thumb-index={index}
+                  className={cn(
+                    "flex-shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-300 w-16 h-16",
+                    currentIndex === index 
+                      ? "ring-2 ring-primary scale-105 opacity-100" 
+                      : "ring-0 scale-100 opacity-70 hover:opacity-100 hover:scale-105"
+                  )}
+                  onClick={() => setCurrentIndex(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.caption}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
-          </Carousel>
+            </div>
+          </div>
+          
+          <style jsx global>{`
+            .scrollbar-hide {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
         </motion.div>
       </div>
 
