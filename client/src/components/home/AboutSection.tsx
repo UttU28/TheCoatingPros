@@ -2,78 +2,122 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function AboutSection() {
-  const { ref: ref1, inView: inView1 } = useScrollAnimation();
-
+  const { ref, inView } = useScrollAnimation();
+  
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-900">
+    <section ref={ref} className="py-16 bg-white dark:bg-slate-800">
       <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 dark:text-white mb-4">About Us</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
-        </motion.div>
-
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            ref={ref1}
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.6 }}
-            className="prose prose-lg dark:prose-invert max-w-none text-center px-4 md:px-8"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Left side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-lg overflow-hidden shadow-2xl"
           >
-            <p>The Coating Pros is a locally owned, Houston-based company specializing in high-quality commercial roof coating services across Houston and Southeast Texas. Backed by a team of certified roofing experts, we provide end-to-end solutions tailored to protect and extend the life of your roof.</p>
-            <p>What sets us apart? It's our personalized approach. We understand that every business has unique roofing needs, so we take the time to assess each project and deliver customized, cost-effective solutions. From traditional materials to advanced systems like EPDM and TPO, we guide you through the best options to suit your property and budget.</p>
-            <p>At The Coating Pros, we take pride in our attention to detail and commitment to excellent customer service. From consultation to completion, we handle everything—so you don't have to worry about a thing.</p>
-            <p className="text-xl font-semibold italic text-primary dark:text-primary-light">
-              The Coating Pros — "We've got you covered!"
-            </p>
-
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 px-4">
-              <div className="flex flex-col items-center text-center space-y-3 p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg transition-transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                  <h4 className="font-semibold text-xl text-slate-800 dark:text-white">20+ Years Experience</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Decades of proven expertise</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center text-center space-y-3 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg transition-transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <div>
-                  <h4 className="font-semibold text-xl text-slate-800 dark:text-white">Fully Licensed & Insured</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Your peace of mind guaranteed</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center text-center space-y-3 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg transition-transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div>
-                  <h4 className="font-semibold text-xl text-slate-800 dark:text-white">Industry-Leading Warranty</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Long-term protection</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center text-center space-y-3 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg transition-transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-                <div>
-                  <h4 className="font-semibold text-xl text-slate-800 dark:text-white">Free Inspections & Quotes</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">No hidden costs</p>
-                </div>
-              </div>
-            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1620558135339-94019a1229b7?q=80&w=1600&auto=format&fit=crop"
+              alt="Commercial Roof Coating Application"
+              className="w-full h-auto"
+            />
           </motion.div>
+          
+          {/* Right side - Text content */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 dark:text-white mb-4">
+                Houston's Trusted Roof Coating Specialists
+              </h2>
+              <div className="w-20 h-1 bg-accent mb-6"></div>
+            </motion.div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-slate-600 dark:text-slate-300 mb-4 text-lg"
+            >
+              For over 15 years, The Coating Pros has been providing Houston businesses with top-quality commercial roof coating solutions that extend roof life, reduce energy costs, and protect your investment.
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-slate-600 dark:text-slate-300 mb-6"
+            >
+              Our team specializes in elastomeric, silicone, and reflective roof coatings for all types of commercial buildings. We're dedicated to providing eco-friendly, energy-efficient solutions that save our clients money while protecting their properties from Houston's harsh weather conditions.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="grid grid-cols-2 gap-4 mb-6"
+            >
+              <div className="flex items-start space-x-2">
+                <div className="rounded-full bg-accent/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-slate-700 dark:text-white">Energy Efficient</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Reduce cooling costs</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <div className="rounded-full bg-accent/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-slate-700 dark:text-white">Extends Roof Life</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Up to 15+ years</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <div className="rounded-full bg-accent/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-slate-700 dark:text-white">Weather Resistant</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Waterproof protection</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <div className="rounded-full bg-accent/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-slate-700 dark:text-white">Environmentally Safe</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Low-VOC options</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <a href="#contact" className="inline-block bg-primary hover:bg-primary-light text-white py-3 px-6 rounded-lg transition-colors shadow-lg mt-2">
+                Get a Free Estimate
+              </a>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,97 +1,87 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-// Certification logos/images
-const certifications = [
-  {
-    id: 1,
-    name: "Better Business Bureau Accredited",
-    image:
-      "https://crst.net/wp-content/uploads/2024/02/CornerStone-Services-Better-Business-Bureau-A-Rating.png.webp",
-  },
-  {
-    id: 2,
-    name: "EPA Certified",
-    image:
-      "https://ww2.epatest.com/wp-content/uploads/2022/09/cropped-android-chrome-512x512-1.png",
-  },
-  {
-    id: 3,
-    name: "NRCA Member",
-    image:
-      "https://eu-images.contentstack.com/v3/assets/blt2ded89bf530e7d7a/blt58000f6a17b37f31/6526a249e9c06c5fb14cc0ad/NRCA_20logo.jpg?width=1280&auto=webp&quality=95&format=jpg&disable=upscale",
-  },
-  {
-    id: 4,
-    name: "Energy Star Partner",
-    image: "https://www.bulbs.com/images/resources/color_estar.gif",
-  },
-];
-
-export default function CertificationsSection() {
+export default function Certifications() {
   const { ref, inView } = useScrollAnimation();
-
+  
+  const certifications = [
+    {
+      id: 1,
+      name: "Energy Star Partner",
+      logo: "https://www.energystar.gov/sites/default/files/tools/EnergyStar_logo-186px_0.png"
+    },
+    {
+      id: 2,
+      name: "NRCA Member",
+      logo: "https://www.nrca.net/NRCA/graphics/logo/header.png"
+    },
+    {
+      id: 3,
+      name: "EPA Certified",
+      logo: "https://www.epa.gov/sites/default/files/styles/medium/public/2021-01/social_media_card_epaseal_1200x675.jpg?itok=ODucCK7G"
+    },
+    {
+      id: 4,
+      name: "Better Business Bureau",
+      logo: "https://www.bbb.org/globalassets/local-bbbs/council-113/media/logos/bbb-logo-blue-m.png"
+    }
+  ];
+  
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-900">
+    <section ref={ref} className="py-16 bg-slate-50 dark:bg-slate-900">
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 dark:text-white mb-4">
             Our Certifications
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            We're proud to be certified by industry-leading organizations. These
-            certifications demonstrate our commitment to quality, safety, and
-            environmental responsibility.
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            We maintain the highest industry standards and certifications to ensure quality service.
           </p>
         </motion.div>
-
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10"
-        >
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.id}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow:
-                  "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-              className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md flex flex-col items-center justify-center transition-all duration-300"
+              className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md dark:shadow-lg flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2"
             >
-              <motion.div
-                className="w-40 h-40 p-4 flex items-center justify-center mb-4"
-                whileHover={{
-                  rotate: [0, -5, 5, -5, 0],
-                  transition: { duration: 0.5 },
-                }}
-              >
-                <img
-                  src={cert.image}
-                  alt={cert.name}
-                  className="max-w-full max-h-full object-contain"
+              <div className="h-16 md:h-20 flex items-center justify-center mb-4">
+                <img 
+                  src={cert.logo} 
+                  alt={`${cert.name} Certification`}
+                  className="max-h-full max-w-full object-contain"
                 />
-              </motion.div>
-              <motion.h3
-                className="text-center text-lg font-medium text-slate-800 dark:text-white"
-                whileHover={{ color: "#338ef7" }}
-              >
+              </div>
+              <h3 className="text-slate-800 dark:text-white font-heading font-medium text-center">
                 {cert.name}
-              </motion.h3>
+              </h3>
             </motion.div>
           ))}
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <p className="text-slate-600 dark:text-slate-300 mb-8">
+            Our team consists of certified professionals who stay up-to-date with the latest industry standards and technologies. We're committed to providing environmentally responsible and energy-efficient roofing solutions.
+          </p>
+          <a 
+            href="#contact" 
+            className="inline-block bg-primary hover:bg-primary-light text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg"
+          >
+            Request a Consultation
+          </a>
         </motion.div>
       </div>
     </section>
