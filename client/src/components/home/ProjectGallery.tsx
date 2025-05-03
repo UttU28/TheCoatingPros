@@ -83,20 +83,20 @@ export default function ProjectGallery() {
 
     return () => clearInterval(timer);
   }, []);
-  
-  // Scroll to active thumbnail when currentIndex changes
-  useEffect(() => {
-    const scrollToActiveThumb = () => {
-      if (carouselRef.current) {
-        const activeThumbElement = carouselRef.current.querySelector(`[data-thumb-index="${currentIndex}"]`);
-        if (activeThumbElement instanceof HTMLElement) {
-          activeThumbElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-      }
-    };
-    
-    setTimeout(scrollToActiveThumb, 100); // Slight delay to ensure DOM is updated
-  }, [currentIndex]);
+
+  // Removed auto-scrolling behavior
+  // useEffect(() => {
+  //   const scrollToActiveThumb = () => {
+  //     if (carouselRef.current) {
+  //       const activeThumbElement = carouselRef.current.querySelector(`[data-thumb-index="${currentIndex}"]`);
+  //       if (activeThumbElement instanceof HTMLElement) {
+  //         activeThumbElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  //       }
+  //     }
+  //   };
+
+  //   setTimeout(scrollToActiveThumb, 100); // Slight delay to ensure DOM is updated
+  // }, [currentIndex]);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -150,7 +150,7 @@ export default function ProjectGallery() {
                 </div>
               </div>
             </div>
-            
+
             {/* Side Navigation Buttons */}
             <button
               onClick={() => setCurrentIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length)}
@@ -194,7 +194,7 @@ export default function ProjectGallery() {
               ))}
             </div>
           </div>
-          
+
           {/* Custom CSS classes added directly to index.css */}
         </motion.div>
       </div>
