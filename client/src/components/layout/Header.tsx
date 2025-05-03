@@ -69,7 +69,7 @@ export default function Header() {
           className="flex items-center space-x-2 cursor-pointer"
         >
           <img
-            src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp"
+            src="https://silver-imaginative-beetle-350.mypinata.cloud/ipfs/bafkreibikyk73phdlhho755ltj35an5uvs2oj3lgn4gcy2n5sddodrasjy"
             alt="The Coating Pros Logo"
             className={`transition-all duration-300 dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
           />
