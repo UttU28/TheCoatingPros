@@ -121,35 +121,58 @@ export default function ProjectGallery() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          {/* Main Image */}
-          <div className="mb-6 cursor-pointer" onClick={() => openLightbox(currentIndex)}>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-              <img
-                src={projectImages[currentIndex].src}
-                alt={projectImages[currentIndex].caption}
-                className="w-full h-full object-cover transition-transform duration-500"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <p className="text-white text-lg font-medium">{projectImages[currentIndex].caption}</p>
+          {/* Main Image with Side Navigation */}
+          <div className="relative max-w-4xl mx-auto mb-6">
+            <div className="cursor-pointer" onClick={() => openLightbox(currentIndex)}>
+              <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
+                <img
+                  src={projectImages[currentIndex].src}
+                  alt={projectImages[currentIndex].caption}
+                  className="w-full h-full object-cover transition-transform duration-500"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-medium">{projectImages[currentIndex].caption}</p>
+                </div>
               </div>
             </div>
+            
+            {/* Side Navigation Buttons */}
+            <button
+              onClick={() => setCurrentIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setCurrentIndex((prev) => (prev + 1) % projectImages.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
           {/* Thumbnails Carousel */}
           <Carousel
             opts={{
-              align: "start",
+              align: "center",
               loop: true,
+              containScroll: "trimSnaps",
             }}
-            className="w-full"
+            className="w-full max-w-3xl mx-auto"
           >
             <CarouselContent className="-ml-2">
               {projectImages.map((image, index) => (
-                <CarouselItem key={image.id} className="pl-2 basis-1/4 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                <CarouselItem key={image.id} className="pl-2 basis-1/5 sm:basis-1/6 md:basis-1/7 lg:basis-1/8">
                   <div
                     className={cn(
-                      "relative aspect-square cursor-pointer overflow-hidden rounded-lg",
-                      currentIndex === index && "ring-2 ring-primary"
+                      "relative aspect-square cursor-pointer overflow-hidden rounded-lg transition-all duration-300",
+                      currentIndex === index 
+                        ? "ring-2 ring-primary scale-95 opacity-100" 
+                        : "ring-0 scale-90 opacity-70 hover:opacity-100 hover:scale-95"
                     )}
                     onClick={() => setCurrentIndex(index)}
                   >
