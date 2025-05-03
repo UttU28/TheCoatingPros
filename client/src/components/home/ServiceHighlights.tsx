@@ -45,7 +45,7 @@ export default function ServiceHighlights() {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-white dark:bg-slate-900 transition-colors duration-300" ref={ref}>
+    <section id="services" className="fullscreen-section bg-white dark:bg-slate-900 transition-colors duration-300" ref={ref}>
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.h2 

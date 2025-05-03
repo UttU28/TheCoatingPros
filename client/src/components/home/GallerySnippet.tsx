@@ -66,7 +66,7 @@ export default function GallerySnippet() {
   };
 
   return (
-    <section id="gallery" className="py-16 md:py-24 bg-slate-100 dark:bg-slate-800 transition-colors duration-300" ref={ref}>
+    <section id="gallery" className="fullscreen-section bg-slate-100 dark:bg-slate-800 transition-colors duration-300" ref={ref}>
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.h2 

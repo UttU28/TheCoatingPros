@@ -7,7 +7,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative bg-gradient-to-r from-primary to-primary-light dark:from-slate-800 dark:to-slate-900 text-white overflow-hidden"
+      className="relative bg-gradient-to-r from-primary to-primary-light dark:from-slate-800 dark:to-slate-900 text-white overflow-hidden fullscreen-section"
       ref={ref}
     >
       <div 

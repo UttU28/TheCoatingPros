@@ -115,6 +115,10 @@
 }
 
 @layer components {
+  .fullscreen-section {
+    @apply min-h-screen flex flex-col justify-center;
+  }
+
   .container-custom {
     @apply container mx-auto px-4;
   }
