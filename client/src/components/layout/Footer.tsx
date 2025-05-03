@@ -1,22 +1,6 @@
 import { Link as ScrollLink } from "react-scroll";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
-
-const navLinks = [
-  { name: "Home", to: "home" },
-  { name: "About", to: "about" },
-  { name: "Services", to: "services" },
-  { name: "Gallery", to: "gallery" },
-  { name: "Certifications", to: "certifications" },
-  { name: "Contact", to: "contact" }
-];
-
-const serviceLinks = [
-  { name: "Roof Coating Solutions", to: "services" },
-  { name: "Waterproofing Services", to: "services" },
-  { name: "Protective Coatings", to: "services" },
-  { name: "Roof Inspections", to: "services" },
-  { name: "Maintenance Programs", to: "services" }
-];
+import { FaFacebookF, FaLinkedinIn, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { navLinks, serviceLinks } from "@/lib/navigation";
 
 export default function Footer() {
   return (
@@ -36,27 +20,24 @@ export default function Footer() {
             <p className="text-slate-400 mb-4">
               Houston's Trusted Roof Coating Specialists providing top-quality commercial roof coating services.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <a 
-                href="#" 
-                className="text-white hover:text-accent transition-colors" 
+                href="https://www.facebook.com/profile.php?id=100091785092473" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-110" 
                 aria-label="Facebook"
               >
-                <FaFacebookF />
+                <FaFacebookF className="text-[#1877F2] text-2xl" />
               </a>
               <a 
-                href="#" 
-                className="text-white hover:text-accent transition-colors" 
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
-              <a 
-                href="#" 
-                className="text-white hover:text-accent transition-colors" 
+                href="https://www.linkedin.com/company/the-coating-pros/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-110" 
                 aria-label="LinkedIn"
               >
-                <FaLinkedinIn />
+                <FaLinkedinIn className="text-[#0A66C2] text-2xl" />
               </a>
             </div>
           </div>

@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { motion } from "framer-motion";
-
-const navLinks = [
-  { name: "Home", to: "home" },
-  { name: "About", to: "about" },
-  { name: "Services", to: "services" },
-  { name: "Gallery", to: "gallery" },
-  { name: "Certifications", to: "certifications" },
-  { name: "Contact", to: "contact" },
-];
+import { navLinks } from "@/lib/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -11,6 +11,7 @@ import Certifications from "./components/home/CertificationsSection";
 import ContactTeaser from "./components/home/ContactTeaser";
 import SplashScreen from "./components/SplashScreen";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
+import CookieConsent from "./components/CookieConsent";
 import { Element } from "react-scroll";
 
 function App() {
@@ -21,39 +22,42 @@ function App() {
       {showSplash ? (
         <SplashScreen onFinish={() => setShowSplash(false)} />
       ) : (
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow pt-20">
-            <Element name="home">
-              <HeroSection />
-            </Element>
+        <>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow pt-20">
+              <Element name="home">
+                <HeroSection />
+              </Element>
 
-            <Element name="about">
-              <AboutSection />
-            </Element>
+              <Element name="about">
+                <AboutSection />
+              </Element>
 
-            <Element name="services">
-              <ServiceHighlights />
-            </Element>
+              <Element name="services">
+                <ServiceHighlights />
+              </Element>
 
-            <TestimonialsSection />
+              <TestimonialsSection />
 
-            <Element name="gallery">
-              <ProjectGallery />
-            </Element>
+              <Element name="gallery">
+                <ProjectGallery />
+              </Element>
 
-            <Element name="certifications">
-              <Certifications />
-            </Element>
+              <Element name="certifications">
+                <Certifications />
+              </Element>
 
-            <Element name="contact">
-              <ContactTeaser />
-            </Element>
-          </main>
-          <Footer />
-          <ScrollToTopButton />
-          <Toaster />
-        </div>
+              <Element name="contact">
+                <ContactTeaser />
+              </Element>
+            </main>
+            <Footer />
+            <ScrollToTopButton />
+            <Toaster />
+          </div>
+          <CookieConsent />
+        </>
       )}
     </>
   );
