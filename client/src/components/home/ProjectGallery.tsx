@@ -5,27 +5,68 @@ import LightboxGallery from "../shared/LightboxGallery";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
+// Project gallery images
 const projectImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80",
-    caption: "Commercial Building - Before Coating"
+    src: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f",
+    alt: "Commercial Roof Coating Project - Before",
+    caption: "Commercial Building - Before Coating",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1599619585752-c3edb42a414c?auto=format&fit=crop&w=800&q=80",
-    caption: "Warehouse Roof Restoration"
+    src: "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198",
+    alt: "Commercial Roof Coating Project - After",
+    caption: "Commercial Building - After Coating",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1582480459366-1ccf56b5b4d3?auto=format&fit=crop&w=800&q=80",
-    caption: "Industrial Building - Complete Roof Coating"
+    src: "https://images.unsplash.com/photo-1605910909756-b8f014b99f0c",
+    alt: "Warehouse Roof Restoration",
+    caption: "Warehouse Roof Restoration",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1616712134411-6b6ae89bc3ba?auto=format&fit=crop&w=800&q=80",
-    caption: "Office Building - Preventative Maintenance"
-  }
+    src: "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198",
+    alt: "Industrial Building Roof Coating",
+    caption: "Industrial Building - Complete Roof Coating",
+  },
+  {
+    id: 5,
+    src: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f",
+    alt: "Office Building Roof Maintenance",
+    caption: "Office Building - Preventative Maintenance",
+  },
+  {
+    id: 6,
+    src: "https://images.unsplash.com/photo-1584677626646-7c8f83690304",
+    alt: "Retail Center Roof Repair",
+    caption: "Retail Center - Roof Repair & Coating",
+  },
+  {
+    id: 7,
+    src: "https://images.unsplash.com/photo-1560817679-f6076ba87591",
+    alt: "Apartment Complex Roof Coating",
+    caption: "Apartment Complex - Full Roof Coating",
+  },
+  {
+    id: 8,
+    src: "https://images.unsplash.com/photo-1602847213180-50e43a80bef4",
+    alt: "Church Roof Restoration",
+    caption: "Church - Roof Restoration Project",
+  },
+  {
+    id: 9,
+    src: "https://images.unsplash.com/photo-1560817679-f6076ba87591",
+    alt: "Restaurant Roof Coating",
+    caption: "Restaurant - UV Reflective Coating",
+  },
+  {
+    id: 10,
+    src: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f",
+    alt: "School Building Roof Repair",
+    caption: "School Building - Complete Roof System",
+  },
 ];
 
 export default function ProjectGallery() {
