@@ -9,13 +9,13 @@ const navLinks = [
   { name: "Services", to: "services" },
   { name: "Gallery", to: "gallery" },
   { name: "Certifications", to: "certifications" },
-  { name: "Contact", to: "contact" },
+  { name: "Contact", to: "contact" }
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  
   // Handle scroll effect on header
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +25,7 @@ export default function Header() {
         setScrolled(false);
       }
     };
-
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,7 +37,7 @@ export default function Header() {
         setIsMenuOpen(false);
       }
     };
-
+    
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen]);
@@ -52,109 +52,80 @@ export default function Header() {
 
   const headerVariants = {
     hidden: { y: -100, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
   };
 
   return (
-    <motion.header
+    <motion.header 
       initial="hidden"
       animate="visible"
       variants={headerVariants}
-      className={`fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-500 ease-in-out ${scrolled ? "py-0" : "py-3"}`}
+      className={`fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}
     >
       <div className="container-custom py-3 flex items-center justify-between">
         {/* Logo */}
-        <div
-          onClick={scrollToTop}
-          className="flex items-center space-x-2 cursor-pointer"
-        >
-          <img
-            src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp"
-            alt="The Coating Pros Logo"
-            className={`transition-all duration-500 ease-in-out dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
+        <div onClick={scrollToTop} className="flex items-center space-x-2 cursor-pointer">
+          <img 
+            src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp" 
+            alt="The Coating Pros Logo" 
+            className="h-8 w-auto dark:invert"
           />
           <div>
-            <h1 className={`font-heading font-bold text-primary dark:text-white transition-all duration-500 ease-in-out ${scrolled ? "text-lg" : "text-xl md:text-2xl"}`}>
-              The Coating Pros
-            </h1>
-            <p className={`text-secondary-light dark:text-slate-400 -mt-1 transition-all duration-300 ${scrolled ? "text-xs" : "text-sm"}`}>
-              Houston's Roof Coating Specialists
-            </p>
+            <h1 className="font-heading font-bold text-lg text-primary dark:text-white">The Coating Pros</h1>
+            <p className="text-xs text-secondary-light dark:text-slate-400 -mt-1">Houston's Roof Coating Specialists</p>
           </div>
         </div>
-
+        
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <ScrollLink
-              key={link.to}
+            <ScrollLink 
+              key={link.to} 
               to={link.to}
               spy={true}
               smooth={true}
               offset={-80}
               duration={500}
               activeClass="nav-link-active"
-              className={`nav-link nav-link-inactive cursor-pointer transition-all duration-300 hover:text-primary ${scrolled ? "text-base" : "text-lg"}`}
+              className="nav-link nav-link-inactive cursor-pointer transition-all duration-300 hover:text-primary"
             >
               {link.name}
             </ScrollLink>
           ))}
         </nav>
-
+        
         {/* Theme Toggle and Mobile Menu Button */}
         <div className="flex items-center space-x-4">
           <ThemeToggle />
-
-          <button
+          
+          <button 
             onClick={toggleMenu}
-            className="md:hidden text-slate-800 dark:text-white focus:outline-none"
+            className="md:hidden text-slate-800 dark:text-white focus:outline-none" 
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
         </div>
       </div>
-
+      
       {/* Mobile Menu */}
-      <div
+      <div 
         className={`md:hidden bg-white dark:bg-slate-800 shadow-lg overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? "max-h-96" : "max-h-0"
+          isMenuOpen ? 'max-h-96' : 'max-h-0'
         }`}
       >
         <div className="container-custom py-3 flex flex-col space-y-4">
           {navLinks.map((link) => (
-            <ScrollLink
-              key={link.to}
+            <ScrollLink 
+              key={link.to} 
               to={link.to}
               spy={true}
               smooth={true}

@@ -18,25 +18,26 @@ function App() {
         <Element name="home">
           <HeroSection />
         </Element>
-
+        
         <Element name="about">
           <AboutSection />
         </Element>
-
+        
+        {/* Adding Testimonials right after About section */}
+        <TestimonialsSection />
+        
         <Element name="services">
           <ServiceHighlights />
         </Element>
-
-        <TestimonialsSection />
-
+        
         <Element name="gallery">
           <ProjectGallery />
         </Element>
-
+        
         <Element name="certifications">
           <Certifications />
         </Element>
-
+        
         <Element name="contact">
           <ContactTeaser />
         </Element>
