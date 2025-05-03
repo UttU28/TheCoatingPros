@@ -179,7 +179,7 @@ export default function ProjectGallery() {
           className="relative"
         >
           {/* Main Image */}
-          <div className="relative max-w-2xl mx-auto mb-6">
+          <div className="relative max-w-2xl mx-auto mb-8">
             <div className="cursor-pointer" onClick={() => openLightbox(currentIndex)}>
               <div className="relative aspect-square overflow-hidden rounded-lg">
                 <img
@@ -196,7 +196,7 @@ export default function ProjectGallery() {
             {/* Navigation Buttons */}
             <button
               onClick={() => setCurrentIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length)}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
+              className="md:absolute md:-left-16 left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors absolute"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -204,7 +204,7 @@ export default function ProjectGallery() {
             </button>
             <button
               onClick={() => setCurrentIndex((prev) => (prev + 1) % projectImages.length)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
+              className="md:absolute md:-right-16 right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-colors absolute"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -213,20 +213,20 @@ export default function ProjectGallery() {
           </div>
 
           {/* Thumbnails Slider */}
-          <div className="max-w-4xl mx-auto overflow-hidden">
+          <div className="max-w-4xl mx-auto overflow-hidden mb-8">
             <div 
               ref={sliderRef}
-              className="flex space-x-2 pb-4 overflow-x-auto scrollbar-hide"
+              className="flex space-x-3 pb-6 overflow-x-auto scrollbar-hide"
               style={{ scrollBehavior: 'smooth' }}
             >
               {projectImages.map((image, index) => (
                 <div
                   key={image.id}
                   className={cn(
-                    "flex-shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-300 w-16 h-16",
+                    "flex-shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-300 w-20 h-20",
                     currentIndex === index 
-                      ? "ring-2 ring-primary scale-105 opacity-100" 
-                      : "ring-0 scale-100 opacity-70 hover:opacity-100"
+                      ? "ring-4 ring-primary scale-110 opacity-100 shadow-lg" 
+                      : "ring-1 ring-slate-200 dark:ring-slate-700 scale-100 opacity-60 hover:opacity-90"
                   )}
                   onClick={() => setCurrentIndex(index)}
                 >
