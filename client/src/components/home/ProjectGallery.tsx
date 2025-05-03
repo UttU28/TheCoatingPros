@@ -78,10 +78,16 @@ export default function ProjectGallery() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % projectImages.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (api) {
+      api.scrollTo(currentIndex);
+    }
+  }, [currentIndex, api]);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
