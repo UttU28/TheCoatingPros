@@ -60,7 +60,7 @@ export default function Header() {
       initial="hidden"
       animate="visible"
       variants={headerVariants}
-      className={`fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-300 ${scrolled ? "py-0" : "py-3"}`}
+      className={`fixed top-0 left-0 w-full bg-white dark:bg-slate-800 shadow-md z-50 transition-all duration-500 ease-in-out ${scrolled ? "py-0" : "py-3"}`}
     >
       <div className="container-custom py-3 flex items-center justify-between">
         {/* Logo */}
@@ -71,10 +71,10 @@ export default function Header() {
           <img
             src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp"
             alt="The Coating Pros Logo"
-            className={`transition-all duration-300 dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
+            className={`transition-all duration-500 ease-in-out dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
           />
           <div>
-            <h1 className={`font-heading font-bold text-primary dark:text-white transition-all duration-300 ${scrolled ? "text-lg" : "text-xl md:text-2xl"}`}>
+            <h1 className={`font-heading font-bold text-primary dark:text-white transition-all duration-500 ease-in-out ${scrolled ? "text-lg" : "text-xl md:text-2xl"}`}>
               The Coating Pros
             </h1>
             <p className={`text-secondary-light dark:text-slate-400 -mt-1 transition-all duration-300 ${scrolled ? "text-xs" : "text-sm"}`}>
