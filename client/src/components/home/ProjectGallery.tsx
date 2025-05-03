@@ -195,15 +195,7 @@ export default function ProjectGallery() {
             </div>
           </div>
           
-          <style jsx global>{`
-            .scrollbar-hide {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-            }
-            .scrollbar-hide::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
+          {/* Custom CSS classes added directly to index.css */}
         </motion.div>
       </div>
 
