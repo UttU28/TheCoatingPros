@@ -64,7 +64,7 @@ export default function CertificationsSection() {
               className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md flex flex-col items-center justify-center transition-all duration-300"
             >
               <motion.div 
-                className="w-28 h-28 p-2 flex items-center justify-center mb-4"
+                className="w-40 h-40 p-4 flex items-center justify-center mb-4"
                 whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
               >
                 <img 
