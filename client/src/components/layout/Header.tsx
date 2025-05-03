@@ -69,9 +69,9 @@ export default function Header() {
           className="flex items-center space-x-2 cursor-pointer"
         >
           <img
-            src="/cross.png"
+            src="https://18efabd6cf.clvaw-cdnwnd.com/4fc45f95ccb478fd517a21f0b40b9877/200000116-935ea935ec/christian-cross-symbol-vector-32959512-5.webp"
             alt="The Coating Pros Logo"
-            className={`transition-all duration-300 ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto ${theme === 'dark' ? 'invert brightness-0 filter' : 'brightness-0'}`}
+            className={`transition-all duration-300 dark:invert ${scrolled ? "h-8" : "h-10 md:h-12"} w-auto`}
           />
           <div>
             <h1 className={`font-heading font-bold text-primary dark:text-white transition-all duration-300 ${scrolled ? "text-lg" : "text-xl md:text-2xl"}`}>
