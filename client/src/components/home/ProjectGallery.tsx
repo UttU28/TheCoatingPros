@@ -134,6 +134,36 @@ export default function ProjectGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
+  // Touch/swipe functionality for the main image
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  
+  // Handle swipe for the main image
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swiped left, go to next image
+      setCurrentIndex((prev) => (prev + 1) % projectImages.length);
+    }
+    
+    if (touchStart - touchEnd < -50) {
+      // Swiped right, go to previous image
+      setCurrentIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length);
+    }
+    
+    // Reset values
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+  
+  // Handle touch drag for thumbnails
   useEffect(() => {
     // Auto-scroll to the current thumbnail
     if (sliderRef.current) {
@@ -180,7 +210,12 @@ export default function ProjectGallery() {
         >
           {/* Main Image */}
           <div className="relative max-w-2xl mx-auto mb-8">
-            <div className="cursor-pointer" onClick={() => openLightbox(currentIndex)}>
+            <div 
+              className="cursor-pointer" 
+              onClick={() => openLightbox(currentIndex)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}>
               <div className="relative aspect-square overflow-hidden rounded-lg">
                 <img
                   src={projectImages[currentIndex].src}
@@ -257,11 +292,36 @@ export default function ProjectGallery() {
           >
             ‹
           </button>
-          <img
-            src={projectImages[lightboxIndex].src}
-            alt={projectImages[lightboxIndex].caption}
-            className="max-h-[90vh] max-w-[90vw] object-contain"
-          />
+          <div 
+            className="w-full h-full flex items-center justify-center"
+            onTouchStart={e => {
+              setTouchStart(e.targetTouches[0].clientX);
+            }}
+            onTouchMove={e => {
+              setTouchEnd(e.targetTouches[0].clientX);
+            }}
+            onTouchEnd={() => {
+              if (touchStart - touchEnd > 50) {
+                // Swiped left, go to next image
+                setLightboxIndex((prev) => (prev + 1) % projectImages.length);
+              }
+              
+              if (touchStart - touchEnd < -50) {
+                // Swiped right, go to previous image
+                setLightboxIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length);
+              }
+              
+              // Reset values
+              setTouchStart(0);
+              setTouchEnd(0);
+            }}
+          >
+            <img
+              src={projectImages[lightboxIndex].src}
+              alt={projectImages[lightboxIndex].caption}
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+            />
+          </div>
           <button
             className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl"
             onClick={() => setLightboxIndex((prev) => (prev + 1) % projectImages.length)}

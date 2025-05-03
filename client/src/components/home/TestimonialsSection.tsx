@@ -37,6 +37,8 @@ export default function TestimonialsSection() {
   const { ref, inView } = useScrollAnimation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   
   // Auto rotate testimonials
   useEffect(() => {
@@ -52,6 +54,32 @@ export default function TestimonialsSection() {
   // Pause auto rotation when hovering
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
+  
+  // Handle touch events for swiping
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsAutoPlaying(false);
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swiped left, go to next testimonial
+      goToTestimonial((activeIndex + 1) % testimonials.length);
+    }
+    
+    if (touchStart - touchEnd < -50) {
+      // Swiped right, go to previous testimonial
+      goToTestimonial((activeIndex - 1 + testimonials.length) % testimonials.length);
+    }
+    
+    // Reset values
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
   
   const goToTestimonial = (index: number) => {
     setActiveIndex(index);
@@ -93,7 +121,12 @@ export default function TestimonialsSection() {
             </button>
           </div>
           
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-xl overflow-hidden">
+          <div 
+            className="bg-white dark:bg-slate-800 rounded-xl shadow-xl overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
