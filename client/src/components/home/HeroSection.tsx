@@ -98,38 +98,40 @@ export default function HeroSection() {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <p className="text-sm text-gray-300 mb-2">Scroll to learn more</p>
+        <div className="container-custom relative">
           <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-            className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center pt-1"
+            className="absolute left-1/2 -translate-x-1/2 -bottom-20 flex flex-col items-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
           >
+            <p className="text-sm text-gray-300 mb-2">Scroll to learn more</p>
             <motion.div
-              className="w-1 h-2 bg-white rounded-full"
               animate={{
-                opacity: [0.2, 1, 0.2],
-                y: [0, 4, 0],
+                y: [0, 10, 0],
               }}
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-            />
+              className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center pt-1"
+            >
+              <motion.div
+                className="w-1 h-2 bg-white rounded-full"
+                animate={{
+                  opacity: [0.2, 1, 0.2],
+                  y: [0, 4, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
