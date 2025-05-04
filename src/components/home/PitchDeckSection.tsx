@@ -44,7 +44,16 @@ export default function PitchDeckSection() {
               alt="Provider Logo" 
               className="h-14 w-auto mx-auto"
             />
-            <p className="text-center mt-2 text-slate-500">Contact: +1 607-296-9583</p>
+            <div className="flex flex-col items-center mt-4 space-y-2">
+              <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
+                <Phone className="w-4 h-4 text-primary" />
+                <span className="font-medium">+1 607-296-9583</span>
+              </div>
+              <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
+                <Mail className="w-4 h-4 text-primary" />
+                <span className="font-medium">utsavmaan28@gmail.com</span>
+              </div>
+            </div>
           </div>
         </div>
       ),
