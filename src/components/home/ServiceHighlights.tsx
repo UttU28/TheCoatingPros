@@ -109,7 +109,7 @@ export default function ServiceHighlights() {
             Our Professional Services
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-lg text-white max-w-3xl mx-auto">
             We provide comprehensive commercial roof coating services to protect and extend the life of your building's roof. Our expert team delivers quality solutions tailored to your specific needs.
           </p>
         </motion.div>

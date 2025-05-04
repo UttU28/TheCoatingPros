@@ -9,6 +9,7 @@ import ServiceHighlights from "./components/home/ServiceHighlights";
 import ProjectGallery from "./components/home/ProjectGallery";
 import Certifications from "./components/home/CertificationsSection";
 import ContactTeaser from "./components/home/ContactTeaser";
+import PitchDeckSection from "./components/home/PitchDeckSection";
 import SplashScreen from "./components/SplashScreen";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import CookieConsent from "./components/CookieConsent";
@@ -46,6 +47,10 @@ function App() {
 
               <Element name="certifications">
                 <Certifications />
+              </Element>
+              
+              <Element name="pitchdeck">
+                <PitchDeckSection />
               </Element>
 
               <Element name="contact">
