@@ -4,6 +4,7 @@ export const navLinks = [
   { to: "services", name: "Services" },
   { to: "gallery", name: "Gallery" },
   { to: "certifications", name: "Certifications" },
+  { to: "pitchdeck", name: "Pitch Deck" },
   { to: "contact", name: "Contact" }
 ];
 
